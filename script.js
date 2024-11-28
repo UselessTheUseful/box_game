@@ -139,8 +139,9 @@ function collision_check() {    // check player collision
     }
 }
 
-function player_reset() {   // move player to start
-    box.fadeOut("fast", () => box.css({"top": "0px", "left": "0px"}).fadeIn());
+function player_reset() {   // move player to start and allow player movement
+    box.stop();
+    box.fadeOut("fast", () => box.css({"top": "0px", "left": "0px"}).fadeIn(() => game_state = "active"));
 }
 
 function game_reset() { // reset position of game elements
@@ -160,7 +161,7 @@ function victory() {    // handles victory events
 
     // display message screen with victory text
     message_text.text("Victory!");
-    message.show();
+    message.fadeIn();
 
     // update score and high score
     let score = obsticles.length;
@@ -181,30 +182,32 @@ function victory() {    // handles victory events
 
     add_obsticle();
 
-    // make play_again_button move player to next level and allow player movement
+    // make play_again_button move player to next level
     play_again_button.click( () => {
         game_reset();
         message.hide();
         play_again_button.off();
-        game_state = "active";
     });
 }
 
 function defeat(text) { // handles defeat events
+    // defeat animation
+    box.animate({top: '-20px'});
+    box.animate({top: '1000px'});
+
     // stop player movement
     game_state = "paused";
 
     // display message screen with defeat text
     // text is given in collision_check based on what caused defeat
     message_text.text(text);
-    message.show();
+    message.fadeIn();
 
-    // make play_again_button restart level and allow player movement
+    // make play_again_button restart
     play_again_button.click( () => {
         player_reset();
         message.hide();
         play_again_button.off();
-        game_state = "active";
     });
 }
 
