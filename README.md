@@ -15,7 +15,7 @@ Access game at https://uselesssboxgame.netlify.app/
 Useless's Box Game is a simple game where the player tries to reach a yellow box through randomly placed obstacles. 
 
 ## Screenshot
-![alt text](image.png)
+![Screenshot of the game](image.png)
 Picture of running game on netlify by me.
 
 ## Technologies
