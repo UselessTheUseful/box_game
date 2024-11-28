@@ -99,7 +99,7 @@ function game_start() { // starts a new game
     // allow player movement
     game_state = "active";
 
-    // set the correct number of obticles
+    // set the correct number of obstacles
     obstacles_reset();
     if (obstacles_number_button.val() > 1) {
         for (i = 1; i < obstacles_number_button.val(); i++) {
@@ -123,7 +123,7 @@ function collision_check() {    // check player collision
         victory();
     }
 
-    // if player touching obticle, defeat
+    // if player touching obstacle, defeat
     for (let i in obstacles) {
         if (obstacles[i].position().top == box.position().top && obstacles[i].position().left == box.position().left) {
             defeat("Collision");
@@ -148,7 +148,7 @@ function game_reset() { // reset position of game elements
     // move player to start
     player_reset();
 
-    // move obticles into random unique location on game map
+    // move obstacles into random unique location on game map
     my_shuffle(obstacle_map);
     for (let i in obstacles) {
         obstacles[i].css({"top": `${obstacle_map[i][1]*20}px`, "left": `${obstacle_map[i][0]*20}px`})
@@ -211,7 +211,7 @@ function defeat(text) { // handles defeat events
     });
 }
 
-function add_obstacle() {   // create a new obticle and add it to the map
+function add_obstacle() {   // create a new obstacle and add it to the map
     obstacles.push(
         obstacles[0].clone()
     );
