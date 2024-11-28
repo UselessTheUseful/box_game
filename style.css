@@ -39,7 +39,7 @@ p {
     text-align: center;
 }
 
-#obsticles_number_button {
+#obstacles_number_button {
     margin: 10px;
 }
 
@@ -57,7 +57,7 @@ p {
     height: 20px;
 }
 
-.obsticle {
+.obstacle {
     width: 20px;
     height: 20px;
     position: absolute;

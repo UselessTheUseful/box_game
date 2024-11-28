@@ -7,12 +7,12 @@ to_menu_button.click(main_menu);
 
 const message_text = $("#message_text")
 
-const obsticles_number_button = $("#obsticles_number_button")
+const obstacles_number_button = $("#obstacles_number_button")
 
 const play_button = $("#play_button");
 play_button.click(game_start); 
 
-const obsticles = [$(".obsticle:first")];
+const obstacles = [$(".obstacle:first")];
 
 const win = $("#win");
 win.css({"top": "100px", "left": "140px"});
@@ -26,11 +26,11 @@ box.css({"top": "0px", "left": "0px"});
 // set to "paused" to stop player from moving
 let game_state
 
-// creates an array of coordinates where obsticles can go (remember to multiply coordinates by 20 before using)
-let obsticle_map = []
+// creates an array of coordinates where obstacles can go (remember to multiply coordinates by 20 before using)
+let obstacle_map = []
 for (let x = 1; x < 7; x++) {
     for (let y = 0; y < 6; y++) {
-        obsticle_map.push([x, y])
+        obstacle_map.push([x, y])
     }
 }
 
@@ -82,7 +82,7 @@ function main_menu() {  // moves to main menu
 
     // hide game elements
     box.hide();
-    obsticles.forEach(
+    obstacles.forEach(
        item => item.hide()
     );
     win.hide();
@@ -100,10 +100,10 @@ function game_start() { // starts a new game
     game_state = "active";
 
     // set the correct number of obticles
-    obsticles_reset();
-    if (obsticles_number_button.val() > 1) {
-        for (i = 1; i < obsticles_number_button.val(); i++) {
-            add_obsticle()
+    obstacles_reset();
+    if (obstacles_number_button.val() > 1) {
+        for (i = 1; i < obstacles_number_button.val(); i++) {
+            add_obstacle()
         }
     }
 
@@ -111,7 +111,7 @@ function game_start() { // starts a new game
     game_reset();
 
     box.show();
-    obsticles.forEach(
+    obstacles.forEach(
        item => item.show()
     );
     win.show();
@@ -124,8 +124,8 @@ function collision_check() {    // check player collision
     }
 
     // if player touching obticle, defeat
-    for (let i in obsticles) {
-        if (obsticles[i].position().top == box.position().top && obsticles[i].position().left == box.position().left) {
+    for (let i in obstacles) {
+        if (obstacles[i].position().top == box.position().top && obstacles[i].position().left == box.position().left) {
             defeat("Collision");
         }
     }
@@ -149,9 +149,9 @@ function game_reset() { // reset position of game elements
     player_reset();
 
     // move obticles into random unique location on game map
-    my_shuffle(obsticle_map);
-    for (let i in obsticles) {
-        obsticles[i].css({"top": `${obsticle_map[i][1]*20}px`, "left": `${obsticle_map[i][0]*20}px`})
+    my_shuffle(obstacle_map);
+    for (let i in obstacles) {
+        obstacles[i].css({"top": `${obstacle_map[i][1]*20}px`, "left": `${obstacle_map[i][0]*20}px`})
     }
 }
 
@@ -164,7 +164,7 @@ function victory() {    // handles victory events
     message.fadeIn();
 
     // update score and high score
-    let score = obsticles.length;
+    let score = obstacles.length;
 
     if (localStorage.getItem("high_score")==null) {
         localStorage.setItem("high_score", score);
@@ -180,7 +180,7 @@ function victory() {    // handles victory events
         $("#high_score").text(score)
     }
 
-    add_obsticle();
+    add_obstacle();
 
     // make play_again_button move player to next level
     play_again_button.click( () => {
@@ -211,18 +211,18 @@ function defeat(text) { // handles defeat events
     });
 }
 
-function add_obsticle() {   // create a new obticle and add it to the map
-    obsticles.push(
-        obsticles[0].clone()
+function add_obstacle() {   // create a new obticle and add it to the map
+    obstacles.push(
+        obstacles[0].clone()
     );
-    obsticles[obsticles.length-1].appendTo($("#map"));
+    obstacles[obstacles.length-1].appendTo($("#map"));
 }
 
-function obsticles_reset() {    // reset obsticle count to 1
-    i = obsticles.length - 1
+function obstacles_reset() {    // reset obstacle count to 1
+    i = obstacles.length - 1
     while (i > 0) {
         i--
-        obsticles.pop()
+        obstacles.pop()
     }
 }
 

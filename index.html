@@ -1,44 +1,50 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <meta charset="UTF-8" />
     <title>title</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div id="score_display">
-        <p>Score</p>
-        <p id="score"></p>
-        <p>High score</p>
-        <p id="high_score"></p>
+      <p>Score</p>
+      <p id="score"></p>
+      <p>High score</p>
+      <p id="high_score"></p>
     </div>
     <div id="game">
-        <div id="map">
-            <div class="obsticle"></div>
-            <div id="box"></div>
-        </div>
+      <div id="map">
+        <div class="obstacle"></div>
+        <div id="box"></div>
+      </div>
 
-        <div id="win"></div>
+      <div id="win"></div>
 
-        <div id="main_menu">
-            <div id="play_button" class="button">
-                <p>Play</p>
-            </div>
-            <p>Starting obsticles</p>
-            <input type="number" id="obsticles_number_button" name="Starting obsticles" min="1" max="5">
+      <div id="main_menu">
+        <div id="play_button" class="button">
+          <p>Play</p>
         </div>
+        <p>Starting obstacles</p>
+        <input
+          type="number"
+          id="obstacles_number_button"
+          name="Starting obstacles"
+          min="1"
+          max="5"
+        />
+      </div>
 
-        <div id="message_screen">
-            <p id="message_text"></p>
-            <div id="play_again_button" class="button">
-                <p>Play again</p>
-            </div>
-            <div id="to_menu_button" class="button">
-                <p>Main menu</p>
-            </div>
+      <div id="message_screen">
+        <p id="message_text"></p>
+        <div id="play_again_button" class="button">
+          <p>Play again</p>
         </div>
+        <div id="to_menu_button" class="button">
+          <p>Main menu</p>
+        </div>
+      </div>
     </div>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
