@@ -1,0 +1,72 @@
+body {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#game {
+    position: relative;
+    width: 160px;
+    height: 120px;
+}
+
+p {
+    margin: 0px;
+    padding: 10px;
+}
+
+#message_screen {
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    width: 120px;
+    height: 160px;
+    background-color: gray;
+}
+
+#main_menu {
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    width: 120px;
+    height: 160px;
+    background-color: gray;
+}
+
+.button {
+    margin: 10px;
+    width: 100px;
+    background-color: white;
+    text-align: center;
+}
+
+#obsticles_number_button {
+    margin: 10px;
+}
+
+#map {
+    width: 160px;
+    height: 120px;
+    border-style: solid;
+    position: absolute;
+    left: -3px;
+    top: -3px;
+}
+
+#box {
+    width: 20px;
+    height: 20px;
+}
+
+.obsticle {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    background-color: black;
+}
+
+#win {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    background-color: yellow;
+}
